@@ -9,7 +9,6 @@ import (
 
 func main() {
 	database.InitDatabase()
-	database.RunMigrations()
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"

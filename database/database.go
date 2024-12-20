@@ -7,8 +7,6 @@ import (
     "github.com/beego/beego/v2/server/web"
     _ "github.com/go-sql-driver/mysql"
     "rbac-beego-api/models"
-    "time"
-    "golang.org/x/crypto/bcrypt"
 )
 
 var (
@@ -60,41 +58,3 @@ func GetOrmer() orm.Ormer {
     return orm.NewOrm()
 }
 
-func RunMigrations() error {
-    // Register models for migration
-    orm.RegisterModel(
-        new(models.User),
-        // Add other models here
-    )
-
-    // Create tables
-    name := "default"
-    force := true     // Drop table if exists
-    verbose := true   // Print log
-    err := orm.RunSyncdb(name, force, verbose)
-    
-    if err != nil {
-        return err
-    }
-
-    // Add initial data if needed
-    o := orm.NewOrm()
-    
-    // Create default admin user
-    adminUser := &models.User{
-        Username: "admin",
-        Email: "admin@example.com",
-        Superadmin: 1,
-        Status: 1,
-        CreatedAt: time.Now(),
-        UpdatedAt: time.Now(),
-    }
-    
-    // Hash password for admin
-    hashedPassword, _ := bcrypt.GenerateFromPassword([]byte("admin123"), bcrypt.DefaultCost)
-    adminUser.PasswordHash = string(hashedPassword)
-    
-    o.Insert(adminUser)
-
-    return nil
-}
