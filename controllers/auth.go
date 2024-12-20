@@ -66,12 +66,14 @@ func (c *AuthController) Login() {
         return
     }
 
+    language := GetUserSystemLanguage(&c.Controller)
     // Log the visit
     c.visitLogService.LogVisit(
         user.Id,
         c.Ctx.Input.IP(),
         c.Ctx.Input.UserAgent(),
-        c.Ctx.Input.Header("Accept-Language"),
+        //c.Ctx.Input.Header("Accept-Language"),
+        language,
     )
 
     c.Data["json"] = map[string]interface{}{

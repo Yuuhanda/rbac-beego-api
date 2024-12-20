@@ -6,9 +6,10 @@ import (
     "rbac-beego-api/services"
 	"fmt"
     "golang.org/x/crypto/bcrypt"
-    "time"
     "encoding/json"
     "io"
+    "time"
+    "strings"
 )
 
 type UserController struct {
@@ -232,4 +233,22 @@ func (c *UserController) DeleteUser() {
         }
     }
     c.ServeJSON()
+}
+
+func GetUserSystemLanguage(c *web.Controller) string {
+    // Get language from browser's Accept-Language header
+    acceptLanguage := c.Ctx.Input.Header("Accept-Language")
+    
+    // Parse the Accept-Language header which looks like: "en-US,en;q=0.9,es;q=0.8"
+    if len(acceptLanguage) > 0 {
+        // Split by comma to get primary language
+        languages := strings.Split(acceptLanguage, ",")
+        if len(languages) > 0 {
+            // Get first preferred language and trim any quality values
+            primaryLang := strings.Split(languages[0], ";")[0]
+            return primaryLang
+        }
+    }
+    
+    return "en" // Default fallback language
 }
