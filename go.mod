@@ -6,7 +6,6 @@ require github.com/beego/beego/v2 v2.3.4
 
 require (
 	github.com/go-sql-driver/mysql v1.8.1
-	github.com/google/uuid v1.6.0
 	github.com/smartystreets/goconvey v1.6.4
 	golang.org/x/crypto v0.24.0
 )
