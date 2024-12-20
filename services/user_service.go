@@ -20,20 +20,40 @@ func NewUserService() *UserService {
         ormer: orm.NewOrm(),
     }
 }
+  // Create creates a new user with uniqueness validation
+  func (s *UserService) Create(user *models.User) error {
+      // Check if email is already taken
+      emailCount, err := s.ormer.QueryTable(new(models.User)).
+          Filter("email", user.Email).
+          Count()
+      if err != nil {
+          return err
+      }
+      if emailCount > 0 {
+          return errors.New("email already exists")
+      }
 
-// Create creates a new user
-func (s *UserService) Create(user *models.User) error {
-    user.CreatedAt = time.Now()
-    user.UpdatedAt = time.Now()
-    
-    if user.Status == 0 {
-        user.Status = 1 // Default status
-    }
-    
-    _, err := s.ormer.Insert(user)
-    return err
-}
+      // Check if username is already taken
+      usernameCount, err := s.ormer.QueryTable(new(models.User)).
+          Filter("username", user.Username).
+          Count()
+      if err != nil {
+          return err
+      }
+      if usernameCount > 0 {
+          return errors.New("username already exists")
+      }
 
+      user.CreatedAt = time.Now()
+      user.UpdatedAt = time.Now()
+    
+      if user.Status == 0 {
+          user.Status = 1 // Default status
+      }
+    
+      _, err = s.ormer.Insert(user)
+      return err
+  }
 // GetByID retrieves user by ID
 func (s *UserService) GetByID(id int) (*models.User, error) {
     user := &models.User{Id: id}
