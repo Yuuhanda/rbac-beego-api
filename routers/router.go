@@ -60,8 +60,8 @@ func InitRoutes() {
     // User Routes
     web.Router("/auth/logout", &controllers.AuthController{}, "post:Logout")
     web.Router("/user/:id", &controllers.UserController{}, "get:GetUser")
-    web.Router("/user/:id", &controllers.UserController{}, "put:UpdateUser")
-    web.Router("/user/:id", &controllers.UserController{}, "delete:DeleteUser")
+    web.Router("/user-update/:id", &controllers.UserController{}, "put:UpdateUser")
+    web.Router("/user-delete/:id", &controllers.UserController{}, "delete:DeleteUser")
     web.Router("/users", &controllers.UserController{}, "get:ListUsers")
     web.Router("/user/:id/visits", &controllers.UserVisitLogController{}, "get:GetUserVisits")
 
