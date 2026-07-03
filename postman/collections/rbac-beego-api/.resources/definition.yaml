@@ -1,0 +1,12 @@
+$kind: collection
+name: RBAC Beego API
+variables:
+  - key: baseUrl
+    value: 'http://localhost:8081'
+  - key: authToken
+    value: ''
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{authToken}}'

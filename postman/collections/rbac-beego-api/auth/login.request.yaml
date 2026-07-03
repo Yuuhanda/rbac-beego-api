@@ -1,0 +1,42 @@
+$kind: http-request
+name: Login
+method: POST
+url: '{{baseUrl}}/auth/login'
+order: 1000
+auth:
+  type: noauth
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "Email": "admin@example.com",
+      "Password": "password123"
+    }
+events:
+  - listen: test
+    script: |-
+      const res = pm.response.json();
+
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has success field", function () {
+        pm.expect(res).to.have.property("success");
+      });
+
+      pm.test("Login is successful", function () {
+        pm.expect(res.success).to.be.true;
+      });
+
+      pm.test("Response contains a token", function () {
+        pm.expect(res).to.have.property("token");
+        pm.expect(res.token).to.be.a("string").and.not.empty;
+      });
+
+      if (res.success && res.token) {
+        pm.environment.set("authToken", res.token);
+      }

@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get User Roles
+method: GET
+url: '{{baseUrl}}/api/user-roles/user/:userId'
+order: 2000
+pathVariables:
+  - key: userId
+    value: '1'

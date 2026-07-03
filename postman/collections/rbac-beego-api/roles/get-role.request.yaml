@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get Role
+method: GET
+url: '{{baseUrl}}/api/roles/:id'
+order: 3000
+pathVariables:
+  - key: id
+    value: admin

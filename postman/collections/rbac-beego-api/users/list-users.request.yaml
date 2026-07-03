@@ -1,0 +1,10 @@
+$kind: http-request
+name: List Users
+method: GET
+url: '{{baseUrl}}/users'
+order: 2000
+queryParams:
+  - key: page
+    value: '1'
+  - key: pageSize
+    value: '10'

@@ -1,0 +1,16 @@
+$kind: http-request
+name: Create Role
+method: POST
+url: '{{baseUrl}}/api/roles'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "Code": "admin",
+      "Name": "Administrator",
+      "Description": "Admin role"
+    }

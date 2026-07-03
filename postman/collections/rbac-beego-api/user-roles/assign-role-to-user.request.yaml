@@ -1,0 +1,15 @@
+$kind: http-request
+name: Assign Role to User
+method: POST
+url: '{{baseUrl}}/api/user-roles'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "UserId": 1,
+      "Code": "admin"
+    }
