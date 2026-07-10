@@ -1,4 +1,4 @@
-$kind: http-request
+﻿$kind: http-request
 name: Create Auth Item
 method: POST
 url: '{{baseUrl}}/api/auth-items'
@@ -6,6 +6,8 @@ order: 1000
 headers:
   - key: Content-Type
     value: application/json
+  - key: token
+    value: '{{authToken}}'
 body:
   type: json
   content: |-

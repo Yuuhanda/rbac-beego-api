@@ -1,5 +1,8 @@
-$kind: http-request
+﻿$kind: http-request
 name: Logout
 method: POST
 url: '{{baseUrl}}/auth/logout'
 order: 2000
+headers:
+  - key: token
+    value: '{{authToken}}'

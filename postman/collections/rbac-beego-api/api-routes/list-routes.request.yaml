@@ -1,5 +1,8 @@
-$kind: http-request
+﻿$kind: http-request
 name: List Routes
 method: GET
 url: '{{baseUrl}}/api/routes/list'
 order: 2000
+headers:
+  - key: token
+    value: '{{authToken}}'

@@ -1,5 +1,8 @@
-$kind: http-request
+﻿$kind: http-request
 name: Scan Routes
 method: POST
 url: '{{baseUrl}}/api/routes/scan'
 order: 1000
+headers:
+  - key: token
+    value: '{{authToken}}'

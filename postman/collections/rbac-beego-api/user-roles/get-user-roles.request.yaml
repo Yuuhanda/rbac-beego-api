@@ -1,8 +1,11 @@
-$kind: http-request
+﻿$kind: http-request
 name: Get User Roles
 method: GET
 url: '{{baseUrl}}/api/user-roles/user/:userId'
 order: 2000
+headers:
+  - key: token
+    value: '{{authToken}}'
 pathVariables:
   - key: userId
     value: '1'

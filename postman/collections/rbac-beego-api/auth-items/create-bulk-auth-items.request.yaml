@@ -1,4 +1,4 @@
-$kind: http-request
+﻿$kind: http-request
 name: Create Bulk Auth Items
 method: POST
 url: '{{baseUrl}}/api/auth-items/bulk'
@@ -6,6 +6,8 @@ order: 6000
 headers:
   - key: Content-Type
     value: application/json
+  - key: token
+    value: '{{authToken}}'
 body:
   type: json
   content: |-

@@ -1,8 +1,11 @@
-$kind: http-request
+﻿$kind: http-request
 name: List Roles
 method: GET
 url: '{{baseUrl}}/api/roles'
 order: 2000
+headers:
+  - key: token
+    value: '{{authToken}}'
 queryParams:
   - key: page
     value: '1'

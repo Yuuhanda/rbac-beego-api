@@ -33,10 +33,10 @@ events:
       });
 
       pm.test("Response contains a token", function () {
-        pm.expect(res).to.have.property("token");
-        pm.expect(res.token).to.be.a("string").and.not.empty;
+        pm.expect(res.data).to.have.property("token");
+        pm.expect(res.data.token).to.be.a("string").and.not.empty;
       });
 
-      if (res.success && res.token) {
-        pm.environment.set("authToken", res.token);
+      if (res.success && res.data && res.data.token) {
+        pm.environment.set("authToken", res.data.token);
       }
