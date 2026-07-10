@@ -1,11 +1,9 @@
-﻿$kind: http-request
+$kind: http-request
 name: Delete Auth Item
 method: DELETE
-url: '{{baseUrl}}/api/auth-items/:id'
+url: "{{baseUrl}}/api/auth-items/:id"
 order: 5000
 headers:
-  - key: token
-    value: '{{authToken}}'
+  Authorization: "{{authToken}}"
 pathVariables:
-  - key: id
-    value: '1'
+  id: "1"

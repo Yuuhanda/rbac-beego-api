@@ -1,13 +1,11 @@
-﻿$kind: http-request
+$kind: http-request
 name: Assign Role to User
 method: POST
-url: '{{baseUrl}}/api/user-roles'
+url: "{{baseUrl}}/api/user-roles"
 order: 1000
 headers:
-  - key: Content-Type
-    value: application/json
-  - key: token
-    value: '{{authToken}}'
+  Content-Type: application/json
+  Authorization: "{{authToken}}"
 body:
   type: json
   content: |-

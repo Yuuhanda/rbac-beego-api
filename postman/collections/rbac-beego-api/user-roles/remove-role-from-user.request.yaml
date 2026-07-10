@@ -1,13 +1,10 @@
-﻿$kind: http-request
+$kind: http-request
 name: Remove Role from User
 method: DELETE
-url: '{{baseUrl}}/api/user-roles/:userId/:roleId'
+url: "{{baseUrl}}/api/user-roles/:userId/:roleId"
 order: 4000
 headers:
-  - key: token
-    value: '{{authToken}}'
+  Authorization: "{{authToken}}"
 pathVariables:
-  - key: userId
-    value: '1'
-  - key: roleId
-    value: admin
+  userId: "1"
+  roleId: admin

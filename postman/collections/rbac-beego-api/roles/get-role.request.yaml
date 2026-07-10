@@ -1,11 +1,9 @@
-﻿$kind: http-request
+$kind: http-request
 name: Get Role
 method: GET
-url: '{{baseUrl}}/api/roles/:id'
+url: "{{baseUrl}}/api/roles/:code"
+pathVariables:
+  code: tester-delete
 order: 3000
 headers:
-  - key: token
-    value: '{{authToken}}'
-pathVariables:
-  - key: id
-    value: admin
+  Authorization: "{{authToken}}"

@@ -1,16 +1,13 @@
-﻿$kind: http-request
+$kind: http-request
 name: Update Auth Item
 method: PUT
-url: '{{baseUrl}}/api/auth-items/:id'
+url: "{{baseUrl}}/api/auth-items/:id"
 order: 4000
 pathVariables:
-  - key: id
-    value: '1'
+  id: "1"
 headers:
-  - key: Content-Type
-    value: application/json
-  - key: token
-    value: '{{authToken}}'
+  Content-Type: application/json
+  Authorization: "{{authToken}}"
 body:
   type: json
   content: |-

@@ -1,13 +1,10 @@
-﻿$kind: http-request
+$kind: http-request
 name: List Users
 method: GET
-url: '{{baseUrl}}/users'
+url: "{{baseUrl}}/users"
 order: 2000
 headers:
-  - key: token
-    value: '{{authToken}}'
+  Authorization: "{{authToken}}"
 queryParams:
-  - key: page
-    value: '1'
-  - key: pageSize
-    value: '10'
+  page: "1"
+  pageSize: "10"

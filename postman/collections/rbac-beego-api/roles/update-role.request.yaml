@@ -1,16 +1,13 @@
-﻿$kind: http-request
+$kind: http-request
 name: Update Role
 method: PUT
-url: '{{baseUrl}}/api/roles/:id'
+url: "{{baseUrl}}/api/roles/:code"
 order: 4000
 pathVariables:
-  - key: id
-    value: admin
+  code: admin
 headers:
-  - key: Content-Type
-    value: application/json
-  - key: token
-    value: '{{authToken}}'
+  Content-Type: application/json
+  Authorization: "{{authToken}}"
 body:
   type: json
   content: |-

@@ -1,19 +1,18 @@
 $kind: http-request
 name: Login
 method: POST
-url: '{{baseUrl}}/auth/login'
+url: "{{baseUrl}}/auth/login"
 order: 1000
 auth:
   type: noauth
 headers:
-  - key: Content-Type
-    value: application/json
+  Content-Type: application/json
 body:
   type: json
   content: |-
     {
-      "Email": "admin@example.com",
-      "Password": "password123"
+      "Email": "bogos@mail.com",
+      "Password": "123456"
     }
 events:
   - listen: test
