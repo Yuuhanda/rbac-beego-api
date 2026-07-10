@@ -1,26 +1,26 @@
 package services
 
 import (
-    "github.com/beego/beego/v2/client/orm"
-    "rbac-beego-api/models"
-    "errors"
+	"errors"
+	"github.com/beego/beego/v2/client/orm"
+	"rbac-beego-api/models"
 )
 
 type AuthService struct {
-    ormer orm.Ormer
+	ormer orm.Ormer
 }
 
 func NewAuthService() *AuthService {
-    return &AuthService{
-        ormer: orm.NewOrm(),
-    }
+	return &AuthService{
+		ormer: orm.NewOrm(),
+	}
 }
 
 func (s *AuthService) GetUserFromToken(token string) (*models.User, error) {
-    user := &models.User{AuthKey: token}
-    err := s.ormer.Read(user, "AuthKey")
-    if err == orm.ErrNoRows {
-        return nil, errors.New("invalid token")
-    }
-    return user, err
+	user := &models.User{AuthKey: token}
+	err := s.ormer.Read(user, "AuthKey")
+	if err == orm.ErrNoRows {
+		return nil, errors.New("invalid token")
+	}
+	return user, err
 }

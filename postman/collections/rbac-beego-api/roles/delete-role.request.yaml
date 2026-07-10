@@ -6,4 +6,4 @@ order: 5000
 headers:
   Authorization: "{{authToken}}"
 pathVariables:
-  code: testeryyy
+  code: tester-delete

@@ -11,6 +11,6 @@ body:
   content: |-
     {
       "Role": "admin",
-      "Path": "/users",
+      "Path": "/api/routes/list",
       "Method": "GET"
     }
