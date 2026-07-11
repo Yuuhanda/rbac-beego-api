@@ -1,0 +1,24 @@
+$kind: http-request
+name: UpdateRoute
+url: "{{baseUrl}}/api/routes/:id"
+method: PUT
+headers:
+  Authorization: "{{authToken}}"
+pathVariables:
+  id: "27"
+body:
+  type: json
+  content: "{\r
+
+    \  \"path\": \"/user/:id/visits\",\r
+
+    \  \"method\": \"GET\",\r
+
+    \  \"controller\": \"UserVisitLogController\",\r
+
+    \  \"action\": \"GetUserVisits\",\r
+
+    \  \"description\": \"API endpoint for GET /user/:id/visits update test\"\r
+
+    }"
+order: 4327205125488795

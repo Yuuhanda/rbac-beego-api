@@ -6,4 +6,4 @@ order: 4000
 headers:
   Authorization: "{{authToken}}"
 pathVariables:
-  id: "25"
+  id: "18"

@@ -1,15 +1,19 @@
 package controllers
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
-	"github.com/beego/beego/v2/core/logs"
-	"github.com/beego/beego/v2/server/web"
 	"go/ast"
 	"go/parser"
 	"go/token"
+	"io"
 	"rbac-beego-api/services"
 	"strconv"
 	"strings"
+
+	"github.com/beego/beego/v2/core/logs"
+	"github.com/beego/beego/v2/server/web"
 )
 
 type APIRouteController struct {
@@ -134,6 +138,76 @@ func extractControllerName(expr ast.Expr) string {
 		}
 	}
 	return ""
+}
+
+func (c *APIRouteController) UpdateRoute() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Invalid ID format",
+			"error":   err.Error(),
+		}
+		c.ServeJSON()
+		return
+	}
+
+	body, readErr := io.ReadAll(c.Ctx.Request.Body)
+	if readErr != nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Failed to read request body",
+			"error":   readErr.Error(),
+		}
+		c.ServeJSON()
+		return
+	}
+	defer c.Ctx.Request.Body.Close()
+
+	if len(bytes.TrimSpace(body)) == 0 {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Request body is empty",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	var payload map[string]string
+	if err := json.Unmarshal(body, &payload); err != nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Invalid request payload",
+			"error":   "expected a JSON object",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	if len(payload) == 0 {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "No updatable fields provided",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	if err := c.routeService.UpdateRoute(id, payload); err != nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Failed to update route",
+			"error":   err.Error(),
+		}
+	} else {
+		c.Data["json"] = map[string]interface{}{
+			"success": true,
+			"message": "Route updated successfully",
+			"data":    payload,
+		}
+	}
+	c.ServeJSON()
 }
 
 func (c *APIRouteController) DeleteRoute() {

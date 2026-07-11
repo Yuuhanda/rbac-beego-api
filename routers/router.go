@@ -30,7 +30,7 @@ func InitRoutes() {
 	// Routes Scanner
 	web.Router("/api/routes/scan", &controllers.APIRouteController{}, "post:ScanRoutes")
 	web.Router("/api/routes/list", &controllers.APIRouteController{}, "get:ListRoutes")
-	web.Router("/api/routes/:id", &controllers.APIRouteController{}, "get:Get;delete:DeleteRoute")
+	web.Router("/api/routes/:id", &controllers.APIRouteController{}, "get:Get;put:UpdateRoute;delete:DeleteRoute")
 
 	// Auth Roles Routes
 	web.Router("/api/roles", &controllers.AuthRolesController{}, "post:Create")
