@@ -5,10 +5,12 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"github.com/beego/beego/v2/client/orm"
-	"golang.org/x/crypto/bcrypt"
 	"rbac-beego-api/models"
 	"time"
+
+	"github.com/beego/beego/v2/client/orm"
+	"golang.org/x/crypto/bcrypt"
+	"github.com/beego/beego/v2/core/logs"
 )
 
 type UserService struct {
@@ -88,10 +90,13 @@ func (s *UserService) Update(user *models.User) error {
 
 // Delete deletes a user
 func (s *UserService) Delete(id int) error {
-	user := &models.User{Id: id}
-	_, err := s.ormer.Delete(user)
+	_, err := s.ormer.Raw("DELETE FROM user WHERE id = ?", id).Exec()
+	if err != nil {
+		logs.Error("Error deleting user:", err)
+	}
 	return err
 }
+
 
 // List retrieves users with pagination
 func (s *UserService) List(page, pageSize int) ([]*models.User, int64, error) {

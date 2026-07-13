@@ -12,7 +12,7 @@ body:
   type: json
   content: |-
     {
-      "username": "johndoe_updated",
-      "email": "john@example.com",
+      "username": "testernewupdated",
+      "email": "test3updated@example.com",
       "status": 1
     }

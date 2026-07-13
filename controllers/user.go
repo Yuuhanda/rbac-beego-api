@@ -3,13 +3,14 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/beego/beego/v2/server/web"
-	"golang.org/x/crypto/bcrypt"
 	"io"
 	"rbac-beego-api/models"
 	"rbac-beego-api/services"
 	"strings"
 	"time"
+
+	"github.com/beego/beego/v2/server/web"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UserController struct {
@@ -18,7 +19,9 @@ type UserController struct {
 }
 
 func (c *UserController) Prepare() {
-	c.userService = services.NewUserService()
+	if c.userService == nil {
+		c.userService = services.NewUserService()
+	}
 }
 
 // CreateUser handles user creation
@@ -207,6 +210,10 @@ func (c *UserController) UpdateUser() {
 // DeleteUser deletes a user
 // @router /user/:id [delete]
 func (c *UserController) DeleteUser() {
+	if c.userService == nil {
+		c.userService = services.NewUserService()
+	}
+
 	idStr := c.Ctx.Input.Param(":id")
 	var id int
 	if _, err := fmt.Sscanf(idStr, "%d", &id); err != nil {
@@ -217,7 +224,27 @@ func (c *UserController) DeleteUser() {
 		c.ServeJSON()
 		return
 	}
+	//find user by id first then delete
+	user, err := c.userService.GetByID(id)
+	if err != nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "User not found",
+			"error":   err.Error(),
+		}
+		c.ServeJSON()
+		return
+	}
 
+	if user == nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "User not found",
+		}
+		c.ServeJSON()
+		return
+	}
+	
 	if err := c.userService.Delete(id); err != nil {
 		c.Data["json"] = map[string]interface{}{
 			"success": false,
