@@ -6,6 +6,8 @@ import (
 	"rbac-beego-api/models"
 	"rbac-beego-api/services"
 	"strconv"
+	"strings"
+
 )
 
 type AuthRolesUserController struct {
@@ -95,8 +97,11 @@ func (c *AuthRolesUserController) GetRoleUsers() {
 func (c *AuthRolesUserController) Delete() {
 	userId := c.Ctx.Input.Param(":userId")
 	userIdInt, _ := strconv.Atoi(userId)
+	roleCode := c.Ctx.Input.Param(":roleCode")
+	roleCode = strings.TrimSpace(roleCode)
 
-	if err := c.roleUserService.Delete(userIdInt); err != nil {
+
+	if err := c.roleUserService.Delete(userIdInt, roleCode); err != nil {
 		c.Data["json"] = map[string]interface{}{
 			"success": false,
 			"message": "Failed to remove role from user",

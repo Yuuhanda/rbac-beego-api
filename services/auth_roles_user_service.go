@@ -54,12 +54,23 @@ func (s *AuthRolesUserService) GetUsersByRoleId(roleId string) ([]*models.User, 
 	var users []*models.User
 	_, err := s.ormer.Raw("SELECT u.* FROM user u "+
 		"JOIN auth_roles_user ru ON u.id = ru.user_id "+
-		"WHERE ru.role_id = ?", roleId).QueryRows(&users)
+		"WHERE ru.roles_code = ?", roleId).QueryRows(&users)
 	return users, err
 }
 
-func (s *AuthRolesUserService) Delete(userId int) error {
-	_, err := s.ormer.Raw("DELETE FROM auth_roles_user WHERE user_id = ?",
-		userId).Exec()
+func (s *AuthRolesUserService) Delete(userId int, roleCode string) error {
+	_, err := s.ormer.Raw("DELETE FROM auth_roles_user WHERE user_id = ? AND roles_code = ?",
+		userId, roleCode).Exec()
+
+	user := &models.User{Id: userId}
+	if err := s.ormer.Read(user); err != nil {
+		return fmt.Errorf("user with ID %d not found", userId)
+	}
+
+	role := &models.AuthRoles{Code: roleCode}
+	if err := s.ormer.Read(role); err != nil {
+		return fmt.Errorf("User with associated role not found")
+	}
+
 	return err
 }
