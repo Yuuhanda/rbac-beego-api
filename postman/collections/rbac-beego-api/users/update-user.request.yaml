@@ -4,7 +4,7 @@ method: PUT
 url: "{{baseUrl}}/user-update/:id"
 order: 4000
 pathVariables:
-  id: "14"
+  id: "22"
 headers:
   Content-Type: application/json
   Authorization: "{{authToken}}"

@@ -6,4 +6,4 @@ order: 3000
 headers:
   Authorization: "{{authToken}}"
 pathVariables:
-  roleId: "1"
+  roleId: superadmin

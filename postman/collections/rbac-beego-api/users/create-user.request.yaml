@@ -11,6 +11,6 @@ body:
   content: |-
     {
       "username": "testernew",
-      "email": "tester3@example.com",
+      "email": "tester4@example.com",
       "password": "password123"
     }
