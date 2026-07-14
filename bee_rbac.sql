@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2026 at 07:55 AM
+-- Generation Time: Jul 14, 2026 at 08:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,30 +43,30 @@ CREATE TABLE `api_route` (
 --
 
 INSERT INTO `api_route` (`id`, `path`, `method`, `controller`, `action`, `description`, `created_at`, `updated_at`) VALUES
-(1, '/auth/login', 'POST', 'AuthController', 'Login', 'API endpoint for POST /auth/login', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(2, '/api/routes/scan', 'POST', 'APIRouteController', 'ScanRoutes', 'API endpoint for POST /api/routes/scan', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(3, '/api/routes/list', 'GET', 'APIRouteController', 'ListRoutes', 'API endpoint for GET /api/routes/list', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(4, '/api/roles', 'POST', 'AuthRolesController', 'Create', 'API endpoint for POST /api/roles', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
+(1, '/auth/login', 'POST', 'AuthController', 'Login', 'API endpoint for POST /auth/login', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(2, '/api/routes/scan', 'POST', 'APIRouteController', 'ScanRoutes', 'API endpoint for POST /api/routes/scan', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(3, '/api/routes/list', 'GET', 'APIRouteController', 'ListRoutes', 'API endpoint for GET /api/routes/list', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(4, '/api/roles', 'POST', 'AuthRolesController', 'Create', 'API endpoint for POST /api/roles', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
 (5, '/api/roles/:id', 'GET', 'AuthRolesController', 'Get', 'API endpoint for GET /api/roles/:id', '2024-12-30 08:41:49', '2024-12-30 08:41:49'),
-(6, '/api/roles', 'GET', 'AuthRolesController', 'List', 'API endpoint for GET /api/roles', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
+(6, '/api/roles', 'GET', 'AuthRolesController', 'List', 'API endpoint for GET /api/roles', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
 (7, '/api/roles/:id', 'PUT', 'AuthRolesController', 'Update', 'API endpoint for PUT /api/roles/:id', '2024-12-30 08:41:49', '2024-12-30 08:41:49'),
 (8, '/api/roles/:id', 'DELETE', 'AuthRolesController', 'Delete', 'API endpoint for DELETE /api/roles/:id', '2024-12-30 08:41:49', '2024-12-30 08:41:49'),
-(9, '/api/user-roles', 'POST', 'AuthRolesUserController', 'Create', 'API endpoint for POST /api/user-roles', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(10, '/api/user-roles/user/:userId', 'GET', 'AuthRolesUserController', 'GetUserRoles', 'API endpoint for GET /api/user-roles/user/:userId', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(11, '/api/user-roles/role/:roleId', 'GET', 'AuthRolesUserController', 'GetRoleUsers', 'API endpoint for GET /api/user-roles/role/:roleId', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(12, '/api/user-roles/:userId/:roleId', 'DELETE', 'AuthRolesUserController', 'Delete', 'API endpoint for DELETE /api/user-roles/:userId/:roleId', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(13, '/api/auth-items', 'POST', 'AuthItemController', 'Create', 'API endpoint for POST /api/auth-items', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(14, '/api/auth-items/:id', 'GET', 'AuthItemController', 'Get', 'API endpoint for GET /api/auth-items/:id', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(15, '/api/auth-items', 'GET', 'AuthItemController', 'List', 'API endpoint for GET /api/auth-items', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(16, '/api/auth-items/:id', 'PUT', 'AuthItemController', 'Update', 'API endpoint for PUT /api/auth-items/:id', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(17, '/api/auth-items/:id', 'DELETE', 'AuthItemController', 'Delete', 'API endpoint for DELETE /api/auth-items/:id', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(19, '/user', 'POST', 'UserController', 'CreateUser', 'API endpoint for POST /user', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(20, '/auth/logout', 'POST', 'AuthController', 'Logout', 'API endpoint for POST /auth/logout', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(21, '/user/:id', 'GET', 'UserController', 'GetUser', 'API endpoint for GET /user/:id', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(22, '/user-update/:id', 'PUT', 'UserController', 'UpdateUser', 'API endpoint for PUT /user-update/:id', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(23, '/user-delete/:id', 'DELETE', 'UserController', 'DeleteUser', 'API endpoint for DELETE /user-delete/:id', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(24, '/users', 'GET', 'UserController', 'ListUsers', 'API endpoint for GET /users', '2024-12-30 08:41:49', '2026-07-13 12:54:12'),
-(27, '/user/:id/visits', 'GET', 'UserVisitLogController', 'GetUserVisits', 'API endpoint for GET /user/:id/visits', '2026-07-11 04:40:10', '2026-07-13 12:54:12');
+(9, '/api/user-roles', 'POST', 'AuthRolesUserController', 'Create', 'API endpoint for POST /api/user-roles', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(10, '/api/user-roles/user/:userId', 'GET', 'AuthRolesUserController', 'GetUserRoles', 'API endpoint for GET /api/user-roles/user/:userId', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(11, '/api/user-roles/role/:roleId', 'GET', 'AuthRolesUserController', 'GetRoleUsers', 'API endpoint for GET /api/user-roles/role/:roleId', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(12, '/api/user-roles/:userId/:roleId', 'DELETE', 'AuthRolesUserController', 'Delete', 'API endpoint for DELETE /api/user-roles/:userId/:roleId', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(13, '/api/auth-items', 'POST', 'AuthItemController', 'Create', 'API endpoint for POST /api/auth-items', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(14, '/api/auth-items/:id', 'GET', 'AuthItemController', 'Get', 'API endpoint for GET /api/auth-items/:id', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(15, '/api/auth-items', 'GET', 'AuthItemController', 'List', 'API endpoint for GET /api/auth-items', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(16, '/api/auth-items/:id', 'PUT', 'AuthItemController', 'Update', 'API endpoint for PUT /api/auth-items/:id', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(17, '/api/auth-items/:id', 'DELETE', 'AuthItemController', 'Delete', 'API endpoint for DELETE /api/auth-items/:id', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(19, '/user', 'POST', 'UserController', 'CreateUser', 'API endpoint for POST /user', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(20, '/auth/logout', 'POST', 'AuthController', 'Logout', 'API endpoint for POST /auth/logout', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(21, '/user/:id', 'GET', 'UserController', 'GetUser', 'API endpoint for GET /user/:id', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(22, '/user-update/:id', 'PUT', 'UserController', 'UpdateUser', 'API endpoint for PUT /user-update/:id', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(23, '/user-delete/:id', 'DELETE', 'UserController', 'DeleteUser', 'API endpoint for DELETE /user-delete/:id', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(24, '/users', 'GET', 'UserController', 'ListUsers', 'API endpoint for GET /users', '2024-12-30 08:41:49', '2026-07-13 13:15:54'),
+(28, '/user/:id/visits', 'GET', 'UserVisitLogController', 'GetUserVisits', 'API endpoint for GET /user/:id/visits', '2026-07-13 13:15:54', '2026-07-13 13:15:54');
 
 -- --------------------------------------------------------
 
@@ -143,6 +143,15 @@ CREATE TABLE `auth_roles_user` (
   `roles_code` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `auth_roles_user`
+--
+
+INSERT INTO `auth_roles_user` (`user_id`, `roles_code`) VALUES
+(22, 'admin'),
+(1, 'superadmin'),
+(2, 'superadmin');
+
 -- --------------------------------------------------------
 
 --
@@ -171,9 +180,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password_hash`, `status`, `superadmin`, `created_at`, `updated_at`, `registration_ip`, `email`, `auth_key`, `bind_to_ip`, `email_confirmed`, `confirmation_token`) VALUES
 (1, 'superadmin', '$2y$13$bp2w2.mTeJ/ORRVlEjA.jOHw0o49vwAJ.A15RTPjnSyk05M.20ZyS', 1, 1, '0000-00-00 00:00:00.00', '2026-07-03 07:50:48.39', NULL, 'super@mail.com', '20260703145048_N31APklfHqP/FEKO9/uQHzIDZ7L9ps3m8d8RmOdd1o8=', '', 1, ''),
-(2, 'bogosbinted', '$2a$10$z357DoGIsf9taHMhlC.5FeVZInJTu9kcXrq/9X/ZU4Owayv2Swt4W', 1, 1, '2024-12-14 06:51:48.00', '2026-07-10 06:18:01.92', '::1', 'bogos@mail.com', '20260710131801_X6WxxydilZCsy8QAFv/jEIeIZXG1+39cGU5k/wBErTY=', '', 0, ''),
+(2, 'bogosbinted', '$2a$10$z357DoGIsf9taHMhlC.5FeVZInJTu9kcXrq/9X/ZU4Owayv2Swt4W', 1, 1, '2024-12-14 06:51:48.00', '2026-07-14 05:59:24.93', '::1', 'bogos@mail.com', '20260714125924_rSEODq7vQFh2/NP/i31oos79quVdbV6kmy14RBYQdmo=', '', 0, ''),
 (13, 'Sisyphuss', '$2a$10$eUFZI1QdBB4sccI.5b/phuEz8ZqqVvZZUTcKiV6t5xiS9G36IkiGO', 1, 0, '2024-12-23 03:58:44.11', '2024-12-23 03:58:44.11', '::1', 'sisyphuss@mail.com', '', '', 0, ''),
-(14, 'johndoe_updated', '$2a$10$1fNI6PI0WRVkPBpzQG9Jkufg3NHciPjA6EUtQL6bIdT5rEnSic.ZO', 1, 0, '2026-07-09 23:30:22.00', '2026-07-10 06:31:34.73', '::1', 'john@example.com', '', '', 0, '');
+(22, 'testernewupdated', '$2a$10$cLevz2zxBFGzto4dzGbBReeuA0pF1jKsQcYDEw.6rvg1L/eotO8qC', 1, 0, '2026-07-13 22:57:49.00', '2026-07-14 06:03:18.91', '::1', 'test3updated@example.com', '20260714130318_1PAY6L9+3lN2OXchuRN5g93zaVboXLmDRPU5Xavorbs=', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -237,7 +246,12 @@ INSERT INTO `user_visit_log` (`id`, `token`, `ip`, `language`, `user_agent`, `us
 (37, '260703145048', '::1', 'en', 'PostmanRuntime/1.9.5', 1, 1783065048, 'Unknown', 'Unknown'),
 (38, '260710131644', '::1', 'en', 'PostmanRuntime/1.9.5', 2, 1783664204, 'Unknown', 'Unknown'),
 (39, '260710131739', '::1', 'en', 'PostmanRuntime/1.9.5', 2, 1783664259, 'Unknown', 'Unknown'),
-(40, '260710131801', '::1', 'en', 'PostmanRuntime/1.9.5', 2, 1783664281, 'Unknown', 'Unknown');
+(40, '260710131801', '::1', 'en', 'PostmanRuntime/1.9.5', 2, 1783664281, 'Unknown', 'Unknown'),
+(41, '260714125653', '::1', 'en', 'PostmanRuntime/1.9.5', 2, 1784008613, 'Unknown', 'Unknown'),
+(42, '260714125735', '::1', 'en', 'PostmanRuntime/1.9.5', 2, 1784008655, 'Unknown', 'Unknown'),
+(43, '260714125826', '::1', 'en', 'PostmanRuntime/1.9.5', 22, 1784008706, 'Unknown', 'Unknown'),
+(44, '260714125924', '::1', 'en', 'PostmanRuntime/1.9.5', 2, 1784008764, 'Unknown', 'Unknown'),
+(45, '260714130318', '::1', 'en', 'PostmanRuntime/1.9.5', 22, 1784008998, 'Unknown', 'Unknown');
 
 --
 -- Indexes for dumped tables
@@ -292,7 +306,7 @@ ALTER TABLE `user_visit_log`
 -- AUTO_INCREMENT for table `api_route`
 --
 ALTER TABLE `api_route`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `auth_item`
@@ -304,13 +318,13 @@ ALTER TABLE `auth_item`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `user_visit_log`
 --
 ALTER TABLE `user_visit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables
