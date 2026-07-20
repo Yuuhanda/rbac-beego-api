@@ -11,8 +11,8 @@ body:
   type: json
   content: |-
     {
-      "Email": "test3updated@example.com",
-      "Password": "password123"
+      "Email": "super@mail.com",
+      "Password": "password"
     }
 events:
   - listen: test

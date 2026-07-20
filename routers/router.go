@@ -6,7 +6,6 @@ import (
 	"go/parser"
 	"go/token"
 	"rbac-beego-api/controllers"
-	"rbac-beego-api/database"
 	"rbac-beego-api/middleware"
 	"rbac-beego-api/services"
 	"strings"
@@ -15,14 +14,10 @@ import (
 )
 
 func init() {
-	database.GetInstance()
 	InitRoutes()
 }
 
 func InitRoutes() {
-	// Get database instance first
-	database.GetInstance()
-
 	// Public routes
 	web.Router("/auth/login", &controllers.AuthController{}, "post:Login")
 
@@ -72,6 +67,7 @@ func InitRoutes() {
 	web.Router("/user-delete/:id", &controllers.UserController{}, "delete:DeleteUser")
 	web.Router("/users", &controllers.UserController{}, "get:ListUsers")
 	web.Router("/user/:id/visits", &controllers.UserVisitLogController{}, "get:GetUserVisits")
+	web.Router("/user/change-password/:id", &controllers.UserController{}, "post:ChangePassword")
 
 }
 

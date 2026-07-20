@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/beego/beego/v2/client/orm"
-	"golang.org/x/crypto/bcrypt"
 	"github.com/beego/beego/v2/core/logs"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UserService struct {
@@ -97,7 +97,6 @@ func (s *UserService) Delete(id int) error {
 	return err
 }
 
-
 // List retrieves users with pagination
 func (s *UserService) List(page, pageSize int) ([]*models.User, int64, error) {
 	var users []*models.User
@@ -177,4 +176,23 @@ func (s *UserService) GetByAuthKey(authKey string) (*models.User, error) {
 		return nil, errors.New("user not found")
 	}
 	return user, err
+}
+
+// change user password
+func (s *UserService) ChangePassword(userId int, oldPassword, newPassword string) error {
+	user, err := s.GetByID(userId)
+	if err != nil {
+		return err
+	}
+
+	if !verifyPassword(oldPassword, user.PasswordHash) {
+		return errors.New("old password is incorrect")
+	}
+
+	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(newPassword), bcrypt.DefaultCost)
+	user.PasswordHash = string(hashedPassword)
+	user.UpdatedAt = time.Now()
+
+	_, err = s.ormer.Update(user, "PasswordHash", "UpdatedAt")
+	return err
 }

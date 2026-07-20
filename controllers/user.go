@@ -244,7 +244,7 @@ func (c *UserController) DeleteUser() {
 		c.ServeJSON()
 		return
 	}
-	
+
 	if err := c.userService.Delete(id); err != nil {
 		c.Data["json"] = map[string]interface{}{
 			"success": false,
@@ -276,4 +276,64 @@ func GetUserSystemLanguage(c *web.Controller) string {
 	}
 
 	return "en" // Default fallback language
+}
+
+// ChangePassword handles user password change
+// @router /user/change-password [post]
+func (c *UserController) ChangePassword() {
+	var passwordForm struct {
+		OldPassword string `json:"old_password"`
+		NewPassword string `json:"new_password"`
+	}
+
+	body, _ := io.ReadAll(c.Ctx.Request.Body)
+	if err := json.Unmarshal(body, &passwordForm); err != nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Invalid form data",
+			"error":   err.Error(),
+		}
+		c.ServeJSON()
+		return
+	}
+
+	// Validate inputs
+	if passwordForm.OldPassword == "" || passwordForm.NewPassword == "" {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Old password and new password are required",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	// Get user ID from request context (typically set by auth middleware)
+	userId, _ := c.GetInt("user_id")
+	if userId == 0 {
+		// Try to get from URL parameter
+		idStr := c.Ctx.Input.Param(":id")
+		if _, err := fmt.Sscanf(idStr, "%d", &userId); err != nil {
+			c.Data["json"] = map[string]interface{}{
+				"success": false,
+				"message": "Invalid user ID",
+			}
+			c.ServeJSON()
+			return
+		}
+	}
+
+	// Call service to change password
+	if err := c.userService.ChangePassword(userId, passwordForm.OldPassword, passwordForm.NewPassword); err != nil {
+		c.Data["json"] = map[string]interface{}{
+			"success": false,
+			"message": "Failed to change password",
+			"error":   err.Error(),
+		}
+	} else {
+		c.Data["json"] = map[string]interface{}{
+			"success": true,
+			"message": "Password changed successfully",
+		}
+	}
+	c.ServeJSON()
 }
